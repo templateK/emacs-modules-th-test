@@ -1,0 +1,29 @@
+name:                emacs-module-th-test
+version:             0.1.0.0
+license:             BSD3
+build-type:          Simple
+cabal-version:       >=2.0
+
+library
+  exposed-modules:     Lib
+  hs-source-dirs:      lib
+  build-depends:       base
+  default-language:    Haskell2010
+
+foreign-library myflib
+    type:               native-shared
+    if os(windows)
+      options: standalone
+
+    other-modules:      FLib
+    hs-source-dirs:     flib
+    build-depends:      base,
+                        emacs-module,
+                        bytestring,
+                        emacs-module-th-test
+    default-language:   Haskell2010
+
+    build-tools:
+      hsc2hs
+    c-sources:
+      cbits/foo.c

@@ -1,0 +1,8 @@
+resolver: lts-12.9
+packages:
+- .
+extra-deps:
+  - git: https://github.com/sergv/emacs-module.git
+    commit: cee3dff20f6860904688fe90d8f897e9783f39b7
+
+skip-msys: true
