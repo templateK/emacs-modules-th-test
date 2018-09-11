@@ -1,1 +1,5 @@
-module FFlib where
+module FFlib
+  ( module Flib
+  ) where
+
+import Flib
