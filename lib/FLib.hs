@@ -6,7 +6,7 @@
 {-# LANGUAGE OverloadedStrings        #-}
 
 
-module FLib where
+module Flib where
 
 
 import Foreign
@@ -55,4 +55,3 @@ initialise runtime = do
       env <- Runtime.getEnvironment runtime''
       res <- reportAllErrorsToEmacs env (pure False) $ runEmacsM env initialise'
       pure $ if res then true else false
-
