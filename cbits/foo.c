@@ -1,7 +1,10 @@
+#include <emacs-module.h>
 #include "HsFFI.h"
 #include "Rts.h"
 
 #include <FLib_stub.h>
+
+int plugin_is_GPL_compatible = 1;
 
 HsBool init(void) {
   int argc = 0;
@@ -15,11 +18,16 @@ HsBool init(void) {
     hs_init_ghc(&argc, &pargv, conf);
   }
   // hs_init(NULL, NULL);
-  someFuncfromFlib();
 
   return HS_BOOL_TRUE;
 }
 
 void deinit(void) {
   hs_exit();
+}
+
+int
+emacs_module_init(struct emacs_runtime *ert)
+{
+  return !(init() && initialise(ert));
 }
