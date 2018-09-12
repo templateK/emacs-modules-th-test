@@ -5,22 +5,25 @@ build-type:          Simple
 cabal-version:       >=2.0
 
 library
-  exposed-modules:     Lib
-                     , Flib
-  hs-source-dirs:      lib
-  build-depends:       base,
-                       emacs-module,
-                       bytestring
-  build-tools:         hsc2hs
-  c-sources:           cbits/foo.c
-  default-language:    Haskell2010
+  exposed-modules:      Lib
+                      , Flib
+  hs-source-dirs:       lib
+                      , flib
+  build-depends:        base,
+                        bytestring,
+                        emacs-module
+  default-language:     Haskell2010
 
 foreign-library myflib
-   type:               native-shared
-   if os(windows)
-     options: standalone
-   hs-source-dirs:     flib
-   other-modules:      FFlib
-   build-depends:      base,
-                       emacs-module-th-test
-   default-language:   Haskell2010
+  type:                 native-shared
+  hs-source-dirs:       flib
+  other-modules:
+  build-tools:          hsc2hs
+  c-sources:            cbits/foo.c
+  build-depends:        base,
+                        bytestring,
+                        emacs-module,
+                        emacs-module-th-test
+  default-language:     Haskell2010
+  if os(windows)
+    options: standalone

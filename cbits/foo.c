@@ -2,7 +2,14 @@
 #include "HsFFI.h"
 #include "Rts.h"
 
-#include <FLib_stub.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern HsBool initialise(struct emacs_runtime *ert);
+#ifdef __cplusplus
+}
+#endif
 
 int plugin_is_GPL_compatible = 1;
 

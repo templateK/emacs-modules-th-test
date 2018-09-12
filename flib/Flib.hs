@@ -6,7 +6,7 @@
 {-# LANGUAGE OverloadedStrings        #-}
 
 
-module Flib where
+module Flib (initialise) where
 
 
 import Foreign
